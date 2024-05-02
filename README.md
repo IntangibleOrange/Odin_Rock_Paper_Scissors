@@ -1,0 +1,1 @@
+This project will demonstrate my ability to use basic javascript covered in the Odin Project

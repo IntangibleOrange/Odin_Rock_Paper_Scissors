@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+    <script>
+
+        function getComputerChoice() {
+
+            let computerChoice = '';
+            const computerDecide = Math.floor(Math.random() * 3) + 1;
+            console.log(computerDecide);
+            if (computerDecide === 1) {
+                return computerChoice = 'Rock';
+            }
+
+            else if (computerDecide === 2 ) {
+                return computerChoice = 'Paper';
+            }
+
+            else {
+                return computerChoice = 'Scissor';
+            }
+        }
+        console.log(getComputerChoice());
+    </script>
+</body>
+</html>

@@ -6,7 +6,10 @@
 </head>
 <body>
     <script>
-
+        
+        let humanScore = 0;
+        let computerScore = 0;
+        // function to get a cumptuer's 'choice' by using the .random() function
         function getComputerChoice() {
 
             let computerChoice = '';
@@ -21,10 +24,10 @@
             }
 
             else {
-                return computerChoice = 'Scissor';
+                return computerChoice = 'Scissors';
             }
         }
-
+        // function to open a prompt to ask user their Rock Paper Scissor (RPS) choice
         function getHumanChoice() {
 
            let humanChoice = prompt("Choose either Rock, Paper, or Scissors:").toLowerCase();
@@ -41,7 +44,7 @@
            }
 
            else if (humanChoice === 'scissor') {
-            return 'Scissor';
+            return 'Scissors';
            }
 
            else { return alert('Can only accept answers Rock, Paper, or Scissors') }
@@ -50,6 +53,64 @@
         }
 
         console.log(getHumanChoice());
+
+        function playRound(humanChoice, computerChoice) {
+            
+            if (humanChoice === computerChoice) {
+                alert(humanChoice + " vs" + computerChoice + " It's a tie!");
+
+            }
+
+            if (humanChoice === 'Rock' && computerChoice === 'Scissors') {
+                
+                alert("Rock beats Scissors! You win!");
+                humanScore++;
+                alert ("Your score is: " + humanScore + "\nComputer's score is:" + computerScore);
+            }
+
+            else if (humanChoice === 'Rock' && computerChoice === 'Paper') {
+
+                alert("Rock losses to Paper. You lose!");
+                computerScore++;
+                alert ("Your score is: " + humanScore + "\nComputer's score is:" + computerScore);
+            }
+
+            else if (humanChoice === 'Paper' && computerChoice === 'Rock') {
+
+                alert("Paper beats Scissors! You win!");
+                humanScore++;
+                alert ("Your score is: " + humanScore + "\nComputer's score is:" + computerScore);
+            }
+
+            else if (humanChoice === 'Paper' && computerChoice === 'Scissors') {
+                alert("Paper loses to Scissors. You lose!");
+                computerScore++;
+                alert ("Your score is: " + humanScore + "\nComputer's score is:" + computerScore);
+            }
+
+            else if (humanChoice === 'Scissors' && computerChoice === 'Paper') {
+
+                alert("Scissors beats Paper! You win!");    
+                humanScore++;
+                alert ("Your score is: " + humanScore + "\nComputer's score is:" + computerScore);
+            }
+
+            else if (humanChoice === 'Scissors' && computerChoice === 'Rock') {
+                alert("Scissors loses to Rock. You lose!");
+                computerScore++;
+                alert ("Your score is: " + humanScore + "\nComputer's score is:" + computerScore);
+            }
+
+            else { alert("haven't coded this part yet just testing cases at the moment");
+            
+            }
+        }
+        
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
+
+        playRound(humanSelection, computerSelection);
+
     </script>
 </body>
 </html>

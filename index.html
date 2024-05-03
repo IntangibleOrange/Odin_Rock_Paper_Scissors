@@ -24,7 +24,32 @@
                 return computerChoice = 'Scissor';
             }
         }
-        console.log(getComputerChoice());
+
+        function getHumanChoice() {
+
+           let humanChoice = prompt("Choose either Rock, Paper, or Scissors:").toLowerCase();
+           if (humanChoice === undefined) {
+            alert("Choice was blank please enter a valid choice");
+           }
+
+           if ( humanChoice === 'rock') {
+            return 'Rock';
+           }
+
+           else if ( humanChoice === 'paper') {
+            return 'Paper';
+           }
+
+           else if (humanChoice === 'scissor') {
+            return 'Scissor';
+           }
+
+           else { return alert('Can only accept answers Rock, Paper, or Scissors') }
+
+
+        }
+
+        console.log(getHumanChoice());
     </script>
 </body>
 </html>

@@ -5,93 +5,73 @@
     <title>Rock Paper Scissors</title>
 </head>
 <body>
+
+
+    <button id="btnR"> Rock</button>
+    <button id="btnS"> Scissor</button>
+    <button  id="btnP"> Paper</button>
+    <div id="container"></div>
     <script>
-
-        function playGame () {
-
             
         let humanScore = 0;
         let computerScore = 0;
-        playMultRound();
+
+
+        let score = document.createElement('div');
+        let results = document.createElement('div');
 
 
          //  Functions plays one round of Rock Paper Scissors
          function playRound(humanChoice, computerChoice) {
             
-            if (humanChoice === computerChoice) {
-                alert(humanChoice + " vs " + computerChoice + " It's a tie!");
-
-            }
-
-            else if (humanChoice === 'Rock' && computerChoice === 'Scissors') {
-                
-                alert("Rock beats Scissors! You win!");
-                humanScore = ++humanScore;
-                alert ("Your score is: " + humanScore + "\nComputer's score is: " + computerScore);
-            }
-
-            else if (humanChoice === 'Rock' && computerChoice === 'Paper') {
-
-                alert("Rock losses to Paper. You lose!");
-                computerScore = ++computerScore;
-                alert ("Your score is: " + humanScore + "\nComputer's score is: " + computerScore);
-            }
-
-            else if (humanChoice === 'Paper' && computerChoice === 'Rock') {
-
-                alert("Paper beats Rock! You win!");
-                humanScore = ++humanScore;
-                alert ("Your score is: " + humanScore + "\nComputer's score is: " + computerScore);
-            }
-
-            else if (humanChoice === 'Paper' && computerChoice === 'Scissors') {
-                alert("Paper loses to Scissors. You lose!");
-                computerScore = ++computerScore;
-                alert ("Your score is: " + humanScore + "\nComputer's score is: " + computerScore);
-            }
-
-            else if (humanChoice === 'Scissors' && computerChoice === 'Paper') {
-
-                alert("Scissors beats Paper! You win!");    
-                humanScore = ++humanScore;
-                alert ("Your score is: " + humanScore + "\nComputer's score is: " + computerScore);
-            }
-
-            else if (humanChoice === 'Scissors' && computerChoice === 'Rock') {
-                alert("Scissors loses to Rock. You lose!");
-                computerScore = ++computerScore;
-                alert ("Your score is: " + humanScore + "\nComputer's score is: " + computerScore);
-            }
-
             
-            }
-
-
-        // function to play multiple rounds of Rock Paper Scissors. May want to add a way to ask user how many they want to play
-        function playMultRound() {
-            let humanSelection = getHumanChoice();
-            let computerSelection = getComputerChoice();
-
-            playRound(humanSelection, computerSelection);
-            console.log(humanScore);
-            console.log(computerScore);
-
-            if (humanScore < 3 && computerScore < 3) {
-                playMultRound();
-            }
-
-            else if (humanScore === 3) {
-                return alert("Congratulations!! You won the game! ")
+            
+            if (humanChoice === computerChoice) {
+               results.textContent = `${humanChoice} vs ${computerChoice}. It's a tie`;
 
             }
 
+            else if ((humanChoice === 'Rock' && computerChoice === 'Scissors') || (humanChoice === 'Paper' && computerChoice === 'Rock')
+                     || (humanChoice === 'Scissor' && computerChoice === 'Paper')) {
+                
+               results.textContent = `${humanChoice} beats ${computerChoice}. You win!`;
+                ++humanScore;
+               score.textContent = `Your score is: ${humanScore} \nComputer's score is: ${computerScore}`;
+            }
             else {
-                return alert("The computer won this time. Better luck next time! ")
+                results.textContent = `${computerChoice} beats ${humanChoice}. You lose!`;
+                ++computerScore;
+               score.textContent = `Your score is: ${humanScore} \nComputer's score is: ${computerScore}`;
             }
-        }
 
-    }
-        
+
+            if ((humanScore === 5) || (computerScore === 5)) {
+                let winner = document.createElement('div');
+                container.removeChild(score);
+                container.removeChild(results);
+
+                if (humanScore > computerScore) {
+                    
+                    winner.textContent = 'Congratulations! You are the winner';
+                
+                }
+
+                else {
+
+                     winner.textContent = 'The Computer is the winner. Better luck next time!';
+
+                    
+                }
+
+                computerScore = 0;
+                humanScore = 0
+                container.appendChild(winner);
+
+            }
+            container.appendChild(score);
+            container.appendChild(results);
+
+         }
 
 
      
@@ -114,37 +94,31 @@
         }
 
 
+        let btnR = document.querySelector("#btnR");
+        let btnS = document.querySelector("#btnS");
+        let btnP = document.querySelector("#btnP");
 
-        // function to open a prompt to ask user their Rock Paper Scissor (RPS) choice
-        function getHumanChoice() {
+        btnR.addEventListener('click' , () => {
+            computerChoice = getComputerChoice();
+            humanChoice = 'Rock';
+            playRound(humanChoice, computerChoice);
+         });
 
-           let humanChoice = prompt("Choose either Rock, Paper, or Scissors:").toLowerCase();
-           if (humanChoice === undefined) {
-            alert("Choice was blank please enter a valid choice");
-           }
+         btnS.addEventListener('click' , () => {
+            computerChoice = getComputerChoice();
+            humanChoice = 'Scissor';
+            playRound(humanChoice, computerChoice);
+            
+         });
 
-           if ( humanChoice === 'rock') {
-            return 'Rock';
-           }
-
-           else if ( humanChoice === 'paper') {
-            return 'Paper';
-           }
-
-           else if (humanChoice === 'scissors') {
-            return 'Scissors';
-           }
-
-           else {  alert('Can only accept answers Rock, Paper, or Scissors');
-                   
-            }
-
-        }
-
-        playGame();
-
-     
+         btnP.addEventListener('click' , () => {
+            computerChoice = getComputerChoice();
+            humanChoice = 'Paper';
+            playRound(humanChoice, computerChoice);
+         });
         
+     container.removeChild(score);
+     container.removeChild(results);
     </script>
 </body>
 </html>

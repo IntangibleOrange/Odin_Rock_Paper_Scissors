@@ -5,38 +5,46 @@
     <title>Rock Paper Scissors</title>
 </head>
 <body>
+
+
+    <button id="btnR"> Rock</button>
+    <button id="btnS"> Scissor</button>
+    <button  id="btnP"> Paper</button>
+    <div id="container"></div>
     <script>
-
-        function playGame () {
-
             
         let humanScore = 0;
         let computerScore = 0;
-        playMultRound();
+
+
+        let score = document.createElement('div');
+        let results = document.createElement('div');
 
 
          //  Functions plays one round of Rock Paper Scissors
          function playRound(humanChoice, computerChoice) {
             
+            
+            
             if (humanChoice === computerChoice) {
-                console.log(`${humanChoice} vs ${computerChoice} it's a tie!`);
+                console.log(`${humanChoice} vs ${computerChoice}. It's a tie!`);
 
             }
 
-            else if ((humanChoice === 'Rock' && computerChoice === 'Scissors') ||
-             (humanChoice === 'Scissor' && computerChoice === 'Paper') || (humanChoice === 'Paper' && computerChoice === 'Rock')) {
+            else if ((humanChoice === 'Rock' && computerChoice === 'Scissors') || (humanChoice === 'Paper' && computerChoice === 'Rock')
+                 || (humanChoice === 'Scissor' && computerChoice === 'Paper') ) {
                 
-                console.log(`You won! ${humanChoice} beats ${computerChoice}`);
+                console.log(`${humanChoice} beats ${computerChoice}. You win`);
                 ++humanScore;
-                console.log (`Your score is: ${humanScore} \n Computer's score is: ${computerScore}`);
+                console.log (`Your score is: ${humanScore} \nThe computer's score is: ${computerScore}`);
             }
 
             else {
-
-                console.log(`You lost! ${computerChoice} beats ${humanChoice}`);
+                console.log(`${computerChoice} beats ${humanChoice} you lose`);
                 ++computerScore;
-                console.log(`Your score is: ${humanScore} \nComputer's score is: ${computerScore}`);
+                console.log(`Your score is: ${humanScore} \nThe computer's score is: ${computerScore}`);
             }
+
             
             }
 
@@ -55,16 +63,16 @@
             }
 
             else if (humanScore === 3) {
-                return console.log("Congratulations!! You won the game! ");
+                return console.log("Congratulations!! You won the game! ")
 
             }
 
             else {
-                return console.log("The computer won this time. Better luck next time! ");
+                return console.log("The computer won this time. Better luck next time! ")
             }
         }
 
-    }
+    
         
 
 
